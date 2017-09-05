@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/amfleming/skeleton.svg?style=svg)](https://circleci.com/gh/amfleming/skeleton)
+[![CircleCI](https://circleci.com/gh/kman2121/skeleton/tree/master.svg?style=svg)](https://circleci.com/gh/kman2121/skeleton/tree/master)
 
 
 skeleton

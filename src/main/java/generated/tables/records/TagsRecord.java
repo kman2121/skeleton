@@ -28,7 +28,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TagsRecord extends UpdatableRecordImpl<TagsRecord> implements Record3<Integer, String, Integer> {
 
-	private static final long serialVersionUID = 735816570;
+	private static final long serialVersionUID = -1634382847;
 
 	/**
 	 * Setter for <code>public.tags.id</code>.
@@ -80,7 +80,7 @@ public class TagsRecord extends UpdatableRecordImpl<TagsRecord> implements Recor
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Record1<String> key() {
+	public Record1<Integer> key() {
 		return (Record1) super.key();
 	}
 

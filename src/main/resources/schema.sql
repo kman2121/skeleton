@@ -16,6 +16,6 @@ CREATE TABLE tags (
   tag_name   VARCHAR(255),
   receipt_id INT UNSIGNED,
 
-  PRIMARY KEY (tag_name),
+  PRIMARY KEY (id),
   CONSTRAINT TAGRECEIPT UNIQUE (tag_name, receipt_id)
 );

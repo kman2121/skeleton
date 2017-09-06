@@ -69,7 +69,7 @@ task generate {
                 .configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.7.0.xsd') {
             jdbc() {
                 driver('org.h2.Driver')
-                url('jdbc:h2:mem:test;MODE=MySQL;INIT=RUNSCRIPT from \'./src/main/resources/schema.sql\'')
+                url('jdbc:h2:mem:receiptsapp;MODE=MySQL;INIT=RUNSCRIPT from \'./src/main/resources/schema.sql\'')
                 user('sa')
                 password('sa')
             }

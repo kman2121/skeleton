@@ -12,7 +12,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Path("/tags/{tag}")
-@Consumes(MediaType.TEXT_PLAIN)
+@Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ToggleTagController {
     final TagDao tagDao;

@@ -5,6 +5,8 @@ import org.jooq.Configuration;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
+import java.util.List;
+
 import static com.google.common.base.Preconditions.checkState;
 import static generated.Tables.RECEIPTS;
 import static generated.Tables.TAGS;
@@ -14,6 +16,10 @@ public class TagDao {
 
     public TagDao(Configuration jooqConfig) {
         this.dsl = DSL.using(jooqConfig);
+    }
+
+    public List<TagsRecord> getAllTags() {
+        return dsl.selectFrom(TAGS).fetch();
     }
 
     public int exists(String tagName, int receiptId) {

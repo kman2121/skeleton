@@ -3,7 +3,9 @@ package controllers;
 import api.CreateReceiptRequest;
 import api.ReceiptResponse;
 import dao.ReceiptDao;
+import dao.TagDao;
 import generated.tables.records.ReceiptsRecord;
+import generated.tables.records.TagsRecord;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -17,20 +19,23 @@ import static java.util.stream.Collectors.toList;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ReceiptController {
-    final ReceiptDao receipts;
+    final private ReceiptDao receiptDao;
+    final private TagDao tagDao;
 
-    public ReceiptController(ReceiptDao receipts) {
-        this.receipts = receipts;
+    public ReceiptController(ReceiptDao receiptDao, TagDao tagDao) {
+        this.receiptDao = receiptDao;
+        this.tagDao = tagDao;
     }
 
     @POST
     public int createReceipt(@Valid @NotNull CreateReceiptRequest receipt) {
-        return receipts.insert(receipt.merchant, receipt.amount);
+        return receiptDao.insert(receipt.merchant, receipt.amount);
     }
 
     @GET
     public List<ReceiptResponse> getReceipts() {
-        List<ReceiptsRecord> receiptRecords = receipts.getAllReceipts();
-        return receiptRecords.stream().map(ReceiptResponse::new).collect(toList());
+        List<ReceiptsRecord> receiptRecords = receiptDao.getAllReceipts();
+        List<TagsRecord> tagRecords = tagDao.getAllTags();
+        return receiptRecords.stream().map(receiptRecord -> new ReceiptResponse(receiptRecord, tagRecords)).collect(toList());
     }
 }

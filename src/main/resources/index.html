@@ -3,57 +3,22 @@
 
 <head>
     <link rel="stylesheet" href="style.css" />
-    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <style>
-        #container {border: 1px solid brown;}
-        H1 {float: left;}
-
-        .button{
-            background-color:#55A;
-            border: 1px solid #229;
-            width: 100px;
-            float: right;
-            font-size: 2em;
-            color: white;
-            text-align: center;
-        }
-
-        #receiptList {
-            border: 1px solid green;
-            clear: both;
-        }
-
-        .receipt {
-            background-color: #eee;
-            margin-bottom: 5px;
-        }
-
-    </style>
-    <script>
-        // This is the idiomatic way to ensure that JQuery does not
-        // execute until the page has loaded
-        $(function(){
-            const api = ""; // <- do not need a root api URL if this page is served directly by the API
-
-            $.getJSON(api+"/receipts", function(receipts){
-                for(var i=0; i < receipts.length; i++) {
-                    var receipt = receipts[i];
-                    $(`<div class="receipt">${receipt.merchantName}<div><span class="receiptTag">t1</span></div></div>`)
-                        .appendTo($("#receiptList"));
-                }
-
-            })
-        })
-    </script>
+    <!--<script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser-polyfill.js"></script>-->
+    <!--<script src="https://fb.me/react-15.1.0.js"></script>-->
+    <!--<script src="https://fb.me/react-dom-15.1.0.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>-->
+    <script src="https://fb.me/react-15.0.0.js"></script>
+    <script src="https://fb.me/react-dom-15.0.0.js"></script>
+    <script src="https://npmcdn.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <script type="text/babel" src="script.js"></script>
 </head>
 
 <body>
-<DIV id="container">
-    <h1>My receipts</h1>
-    <div class="button">+</div>
-    <div id="receiptList">
-    </div>
-</DIV>
+    <div id="container"></div>
 </body>
 
 </html>

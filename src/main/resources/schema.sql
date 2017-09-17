@@ -19,3 +19,5 @@ CREATE TABLE tags (
   PRIMARY KEY (id),
   CONSTRAINT TAGRECEIPT UNIQUE (tag_name, receipt_id)
 );
+
+ALTER TABLE `tags` ADD FOREIGN KEY (`receipt_id`) REFERENCES `receipts` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

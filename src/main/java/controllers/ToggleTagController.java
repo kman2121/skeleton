@@ -4,6 +4,7 @@ import api.ReceiptResponse;
 import dao.ReceiptDao;
 import dao.TagDao;
 import generated.tables.records.ReceiptsRecord;
+import generated.tables.records.TagsRecord;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -26,7 +27,8 @@ public class ToggleTagController {
     @GET
     public List<ReceiptResponse> getReceiptsByTag(@PathParam("tag") String tagName) {
         List<ReceiptsRecord> receiptRecords = receiptDao.getFilteredReceipts(tagName);
-        return receiptRecords.stream().map(ReceiptResponse::new).collect(toList());
+        List<TagsRecord> tagRecords = tagDao.getAllTags();
+        return receiptRecords.stream().map(receiptRecord -> new ReceiptResponse(receiptRecord, tagRecords)).collect(toList());
     }
 
     @PUT

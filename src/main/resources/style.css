@@ -1,0 +1,106 @@
+#container {
+    border: 1px solid brown;
+    max-width: 600px;
+    margin: auto;
+    padding: 25px;
+
+    font-family: sans-serif;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#header h1 {
+    margin: 0;
+}
+
+#header #add-receipt {
+    border: solid 1px #229;
+    border-radius: 10px;
+    background-color: #55A;
+    width: 100px;
+    height: 35px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+#add-receipt-form {
+    border: solid 1px #229;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    float: right;
+}
+
+#add-receipt-form input {
+    width: 60%;
+    margin: 5px auto;
+}
+
+#add-receipt-form #button-row {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+
+    font-weight: bold;
+}
+
+#add-receipt-form #button-row .receipt-btn {
+    border: 1px solid #229;
+    border-radius: 4px;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.row.receiptList-header {
+    margin: 20px 0 0 0;
+    border: 1px solid green;
+
+    font-weight: bold;
+}
+
+#receiptList {
+    max-height: 750px;
+    overflow-y: auto;
+
+    border: 1px solid green;
+    border-top: none;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 0;
+}
+
+.row .el {
+    width: 20%;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#receiptList .row .tag-btn {
+    border: 1px solid #229;
+    border-radius: 10px;
+    padding: 1px 10px;
+    margin: 3px auto;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.receipt:nth-of-type(even) {
+    background-color: #eee;
+}

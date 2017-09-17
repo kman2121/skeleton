@@ -1,6 +1,7 @@
 package dao;
 
 import generated.tables.records.ReceiptsRecord;
+import generated.tables.records.TagsRecord;
 import org.jooq.Configuration;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;

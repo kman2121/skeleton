@@ -1,8 +1,6 @@
 #container {
-    border: 1px solid brown;
     max-width: 600px;
     margin: auto;
-    padding: 25px;
 
     font-family: sans-serif;
 }
@@ -17,7 +15,7 @@
     margin: 0;
 }
 
-#header #add-receipt {
+#header .button {
     border: solid 1px #229;
     border-radius: 10px;
     background-color: #55A;
@@ -28,6 +26,62 @@
     color: white;
     text-align: center;
     cursor: pointer;
+}
+
+#header #start-camera img {
+    height: 35px;
+}
+
+#camera-modal {
+    position: absolute;
+    width: 50%;
+    height: 70%;
+    left: 25%;
+    top: 15%;
+    text-align: center;
+
+    background-color: #BBB;
+}
+
+#camera-modal #modal-header {
+    background-color: #55A;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+#camera-modal #modal-header span {
+    margin: 0 15px;
+}
+
+#camera-modal #modal-header span#take-pic-cancel {
+    cursor: pointer;
+}
+
+#camera-modal #video-wrapper {
+    margin-top: 25px;
+}
+
+#camera-modal #take-pic {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #55A;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+#camera-modal #error-message {
+    margin-top: 10px;
+    color: #DD0000;
+    font-weight: bold;
 }
 
 #add-receipt-form {

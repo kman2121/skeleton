@@ -10,8 +10,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import static java.lang.System.out;
-
 @Path("/images")
 @Consumes(MediaType.TEXT_PLAIN)
 @Produces(MediaType.APPLICATION_JSON)
@@ -44,20 +42,36 @@ public class ReceiptImageController {
         try (ImageAnnotatorClient client = ImageAnnotatorClient.create()) {
             BatchAnnotateImagesResponse responses = client.batchAnnotateImages(Collections.singletonList(request));
             AnnotateImageResponse res = responses.getResponses(0);
-
-            String merchantName = null;
-            BigDecimal amount = null;
-
-            // Your Algo Here!!
-            // Sort text annotations by bounding polygon.  Top-most non-decimal text is the merchant
-            // bottom-most decimal text is the total amount
-            for (EntityAnnotation annotation : res.getTextAnnotationsList()) {
-                out.printf("Position : %s\n", annotation.getBoundingPoly());
-                out.printf("Text: %s\n", annotation.getDescription());
+            if (res.getTextAnnotationsList().size() == 0) {
+                return new ReceiptSuggestionResponse(null, null);
             }
 
-            //TextAnnotation fullTextAnnotation = res.getFullTextAnnotation();
-            return new ReceiptSuggestionResponse(merchantName, amount);
+            String merchantName = "";
+            double amount = 0;
+
+            /*
+            * found == 0: looking for merchant
+            * found == 1: looking for amount
+            */
+            int found = 0;
+            String[] lines = res.getTextAnnotationsList().get(0).getDescription().split("\n");
+            for (String line : lines) {
+                if (found == 0) {
+                    if (Character.isDigit(line.charAt(0))) {
+                        found = 1;
+                    } else {
+                        merchantName += " " + line;
+                    }
+                } else {
+                    for (String str : line.split(" ")) {
+                        if (str.matches("\\d{1,3}\\.\\d{2}")) {
+                            amount = Math.max(amount, Double.parseDouble(str));
+                        }
+                    }
+                }
+            }
+
+            return new ReceiptSuggestionResponse(merchantName.trim(), BigDecimal.valueOf(amount));
         }
     }
 }

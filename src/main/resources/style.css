@@ -35,7 +35,7 @@
 #camera-modal {
     position: absolute;
     width: 50%;
-    height: 70%;
+    min-height: 70%;
     left: 25%;
     top: 15%;
     text-align: center;
@@ -61,17 +61,12 @@
     cursor: pointer;
 }
 
-#camera-modal #video-wrapper {
-    margin-top: 25px;
-}
-
 #camera-modal #take-pic {
     color: white;
     font-size: 24px;
     font-weight: bold;
     background-color: #55A;
     display: inline-block;
-    margin-top: 10px;
     padding: 5px 10px;
     border-radius: 10px;
 

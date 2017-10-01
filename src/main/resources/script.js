@@ -137,7 +137,7 @@ const AddReceiptForm = React.createClass({
             merchant: '',
             amount: ''
         });
-        this.props.closeForm();
+        this.props.closeForm(e);
     },
     handleSaveClick: function(e) {
         if (!this.state.merchant) { return; }
@@ -232,8 +232,12 @@ const CameraModal = React.createClass({
                     <span id="take-pic-cancel" onClick={this.props.toggleCameraModal}>x</span>
                 </div>
 
-                <div id="video-wrapper">
-                    <video autoPlay></video>
+                <div>
+                    <video style={{
+                        maxWidth: '100%',
+                        padding: '25px',
+                        boxSizing: 'border-box'
+                    }} autoPlay></video>
                 </div>
 
                 <div id="take-pic" onClick={this.takeSnapshot}>Snap Receipt</div>
